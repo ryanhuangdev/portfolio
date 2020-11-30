@@ -1,9 +1,43 @@
-import React from "react"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-const SEO = () => {
-  return <div>SEO Component</div>
-}
+const query = graphql`
+  {
+    site {
+      siteMetadata {
+        author
+        siteDesc: description
+        image
+        siteUrl
+        twitterUsername
+        siteTitle: title
+      }
+    }
+  }
+`;
 
-export default SEO
+const SEO = ({ title, description }) => {
+  const { site } = useStaticQuery(query);
+  const {
+    siteUrl,
+    siteDesc,
+    image,
+    siteTitle,
+    twitterUsername,
+  } = site.siteMetadata;
+
+  return (
+    <Helmet htmlAttributes={{ lang: "en" }} title={title}>
+      <meta name="description" content={description || siteDesc} />
+      <meta name="image" content={image} />
+      <meta name='twitter:card' content='summary_large_image' />
+      <meta name='twitter:create' content={twitterUsername} />
+      <meta name='twitter:title' content={siteTitle} />
+      <meta name='twitter:description' content={siteDesc} />
+      <meta name='twitter:image' content={`${siteUrl}${image}`} />
+    </Helmet>
+  );
+};
+
+export default SEO;
