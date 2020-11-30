@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Title from "./Title";
 import Project from "./Project";
 import { Link } from "gatsby";
+
 const Projects = ({ projects, title, showLink }) => {
   return (
     <section className="section projects">
@@ -18,6 +20,12 @@ const Projects = ({ projects, title, showLink }) => {
       )}
     </section>
   );
+};
+
+Projects.propTypes = {
+  projects: PropTypes.arrayOf(PropTypes.object).isRequired,
+  title: PropTypes.string.isRequired,
+  showLink: PropTypes.bool.isRequired
 };
 
 export default Projects;
