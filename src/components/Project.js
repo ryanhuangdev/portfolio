@@ -31,7 +31,6 @@ const Project = ({ description, title, github, stack, url, image, index }) => {
 Project.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   github: PropTypes.string.isRequired,
   stack: PropTypes.arrayOf(PropTypes.object).isRequired,
   url: PropTypes.string.isRequired,

@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout";
 import { graphql } from "gatsby";
 import Projects from "../components/Projects";
+import SEO from "../components/SEO";
 
 const ProjectsPage = ({
   data: {
@@ -9,6 +10,7 @@ const ProjectsPage = ({
   },
 }) => {
   return <Layout>
+    <SEO title="Projects" description="my projects" />
     <section>
       <Projects projects={projects} title='all projects' />
     </section>

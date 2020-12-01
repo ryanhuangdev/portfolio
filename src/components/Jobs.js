@@ -16,6 +16,7 @@ const query = graphql`
         }
         strapiId
         position
+        location
       }
     }
   }
@@ -27,7 +28,7 @@ const Jobs = () => {
     allStrapiJobs: { nodes: jobs },
   } = data;
   const [value, setValue] = useState(0);
-  const { company, position, date, desc } = jobs[value];
+  const { company, position, date, desc, location } = jobs[value];
 
   return (
     <section className="section jobs">
@@ -49,6 +50,7 @@ const Jobs = () => {
         <article className="job-info">
           <h3>{position}</h3>
           <h4>{company}</h4>
+          <h5>{location}</h5><br/>
           <p className="job-date">{date}</p>
           {desc.map((item) => {
             return (
